@@ -1,5 +1,5 @@
 ---
-layout: descripcion
+layout: index
 ---
 
 #Descripción del proyecto
