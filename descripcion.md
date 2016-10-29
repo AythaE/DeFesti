@@ -11,11 +11,15 @@ Por todo ello sería interesante algún sistema para descubrir festivales, un in
 
 ## Análisis de mercado
 Aunque existen algunas opciones similares no hay ninguna que sea realmente conocida o empleada habitualmente por los fans de los festivales. Si introducimos festivales de música en los buscadores más conocidos de internet se encuentran diversas páginas como:
-<ul>
-<li> [festivales.com](http://www.festivales.com/festivales-de/musica) en la que el administrador de la web va creando el contenido fijandose en las páginas de festivales. Esto tiene el problema de que si no se esta activo rapidamente se queda obsoleto el contenido.</li>
-<li> [ticketea](https://www.ticketea.com/festivales/), tiene información muy actualizada pero no deja de ser una plataforma de venta de entradas en la que los pequeños festivales no tienen cabida.</li>
-<li> [fanmusicfest](http://fanmusicfest.com/lista-festivales), al igual que la primera el contenido es creado por los administradores aunque está bastante más actualizado que festivales.com, el problema es que no se promocionan festivales pequeños y los editores tendrán sus propios criterios para elegir unos festivales u otros.</li>
-</ul>
+
+- [festivales.com](http://www.festivales.com/festivales-de/musica) en la que el administrador de la web va creando el contenido fijandose en las páginas de festivales. Esto tiene el problema de que si no se esta activo rapidamente se queda obsoleto el contenido.
+
+- [ticketea](https://www.ticketea.com/festivales/), tiene información muy actualizada pero no deja de ser una plataforma de venta de entradas en la que los pequeños festivales no tienen cabida.
+
+- [fanmusicfest](http://fanmusicfest.com/lista-festivales), al igual que la primera el contenido es creado por los administradores aunque está bastante más actualizado que festivales.com, el problema es que no se promocionan festivales pequeños y los editores tendrán sus propios criterios para elegir unos festivales u otros.
+
+
+
 ## La solución
 Sería más interesante un sistema de festivales en el que fueran los propios organizadores de los festivales los encargados de crear y mantener el contenido sobre los festivales, entradas, artistas,... Ofreciendo la posibilidad de registrarse a cualquier organizador se lograría que cualquiera que organice un festival ya sea pequeño o grande sea capaz de publicitarse en una plataforma de modo gratuito.
 
