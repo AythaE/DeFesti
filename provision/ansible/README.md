@@ -24,10 +24,10 @@ tras esto hay que indicarle a ansible la ruta de esa clave en el fichero `organi
   ...
 ```
 
-Una vez arrancada la instancia remota y realizado los pasos previos para provisionar el microservicio Organizadores basta con ejecutar: 
+Una vez arrancada la instancia remota y realizado los pasos previos para provisionar el microservicio Organizadores basta con ejecutar:
 ```
 ansible-playbook -i inventory organizadoresPlaybook.yml --key-file=[rutaClavePrivada]
 ``` 
 donde la rutaClavePrivada es la ubicación de la clave privada usada para conectarse por ssh con su maquina remota a provisionar. El resultado de dicho provisionamiento será algo parecido a lo siguiente:
 
-![Imagen ejecución ansible]( "Ejecución ansible")
+![Imagen ejecución ansible](https://raw.githubusercontent.com/AythaE/DeFesti/gh-pages/images/EjecucionAnsible.png "Ejecución ansible")
