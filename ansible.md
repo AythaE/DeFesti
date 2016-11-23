@@ -9,7 +9,7 @@ Hay que editar el fichero `inventory` sustituyendo la IP que en el aparece por l
 
 La maquina remota que se vaya a provisionar ha de tener python 2.x instalado, comprobarlo y de no ser así instalarlo con `apt-get install python`. Si se va a utilizar una máquina de AWS se recomienda usar Ubuntu 14.04.5 LTS ya que trae python 2 instalado por defecto. En cualquer caso este provisionamiento está creado para efectuarse en una máquina Ubuntu, en caso de probarlo en otros S.O. se requerirán ligeras modificaciones de los archivos (las rutas por ejemplo) y no se garantiza su funcionamiento.
 
-Este provisionamiento crea un usuario en la maquina virtual, para poder acceder por ssh a este usuario es necesario indicarle a ansible donde está su clave publica asociada a la clave privada usada para conectarse con la máquina remota. Para generar la clave publica de una privada en formato .pem basta con ejecutar 
+Este provisionamiento crea un usuario en la maquina virtual, para poder acceder por ssh a este usuario es necesario indicarle a ansible donde está su clave publica asociada a la clave privada usada para conectarse con la máquina remota. Para generar la clave publica de una privada en formato .pem basta con ejecutar
 ```
 ssh-keygen -y -f mykey.pem > mykey.pub
 ``` 
