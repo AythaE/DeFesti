@@ -44,10 +44,13 @@ Para este proyecto se seguirá una arquitectura basada en microservicios como se
 Se han elegido 2 sistemas de provisionamiento para el proyecto, actualmente se ofrece el provisionamiento del servicio organizadores aunque aún no esté implementado. Ambos sistemas están pensados para provisionar una instancia de AWS con una imagen de Ubuntu 14.04.5 LTS aunque podrían funcionar para otros sistemas se requerirían ciertas modificaciones por lo que se recomienda usar esa imagen.
 
 ### Ansible
-Se ha elegido este sistema por su gran flexibilidad y extenso número de opciones, puede encontrar unas instrucciones detalladas en este [enlace](provision/ansible/README.md).
+Se ha elegido este sistema por su gran flexibilidad y extenso número de opciones, puede encontrar unas instrucciones detalladas en este [enlace](ansible).
 
 ### Chef
-Se ha elegido este sistema por su extendido uso en entornos reales, puede encontrar unas instrucciones detalladas en este [enlace](provision/chef/README.md).
+Se ha elegido este sistema por su extendido uso en entornos reales, puede encontrar unas instrucciones detalladas en este [enlace](chef).
+
+### Correcciones de otros compañeros
+Se han probado los sistemas de provisionamiento de otros dos compañeros, [@flupi](https://github.com/fblupi) y [@joseangeldiazg](https://github.com/joseangeldiazg). Los resultados de estas pruebas se pueden consultar [aquí](prueba_provisionamiento_companieros)
 
 
 ## Licencia

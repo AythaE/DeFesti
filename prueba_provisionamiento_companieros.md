@@ -33,3 +33,5 @@ layout: index
 
 ![Ejecucion chef-solo joseangeldiazg](https://raw.githubusercontent.com/AythaE/DeFesti/gh-pages/images/Ejecucion%20chef%20joseangeldiazg.png "Ejecución chef-solo joseangeldiazg")
 
+
+Volver a la [página principal](index)
