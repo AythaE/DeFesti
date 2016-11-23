@@ -52,7 +52,6 @@ Se ha elegido este sistema por su extendido uso en entornos reales, puede encont
 ### Correcciones de otros compañeros
 Se han probado los sistemas de provisionamiento de otros dos compañeros, [@flupi](https://github.com/fblupi) y [@joseangeldiazg](https://github.com/joseangeldiazg). Los resultados de estas pruebas se pueden consultar [aquí](prueba_provisionamiento_companieros)
 
-
 ## Licencia
 Este proyecto tiene una licencia GPL v3.0, para información detallada vease [LICENSE](https://github.com/AythaE/DeFesti/blob/master/LICENSE)
 
