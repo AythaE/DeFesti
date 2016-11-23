@@ -40,4 +40,4 @@ donde la rutaClavePrivada es la ubicación de la clave privada usada para conect
 
 ![Imagen ejecución ansible](https://raw.githubusercontent.com/AythaE/DeFesti/gh-pages/images/EjecucionAnsible.png "Ejecución ansible")
 
-Volver a la [página principal](index.md)
+Volver a la [página principal](index)
