@@ -1,6 +1,6 @@
 # DeFesti
 
-Actualizado a 02/11/2016
+Actualizado a 23/11/2016
 
 Repositorio para el proyecto de la asignatura Cloud Computing 1 del  del Máster Ingeniería Informática UGR.
 
@@ -39,6 +39,16 @@ Para este proyecto se seguirá una arquitectura basada en microservicios como se
 - El servicio de Festivales se encargará de gestionar la información sobre los festivales incluyendo las operaciones tipicas CRUD. También empleará una base de datos orientada a documentos.
 - El servicio de Artistas se encargará de gestionar la información sobre los artistas incluyendo las operaciones típicas CRUD.También empleará una base de datos orientada a documentos.
 - También se planea introducir un servicio de logger para registrar las interacciones con la aplicación web y poder extraer información de estos datos como los festivales más populares o recuperar las bases de datos de los microservicios en caso de error. Los mensajes logs generados se almacenarán en una base de datos.
+
+## Provisionamiento
+Se han elegido 2 sistemas de provisionamiento para el proyecto, actualmente se ofrece el provisionamiento del servicio organizadores aunque aún no esté implementado. Ambos sistemas están pensados para provisionar una instancia de AWS con una imagen de Ubuntu 14.04.5 LTS aunque podrían funcionar para otros sistemas se requerirían ciertas modificaciones por lo que se recomienda usar esa imagen.
+
+### Ansible
+Se ha elegido este sistema por su gran flexibilidad y extenso número de opciones, puede encontrar unas instrucciones detalladas en este [enlace](provision/ansible/README.md).
+
+### Chef
+Se ha elegido este sistema por su extendido uso en entornos reales, puede encontrar unas instrucciones detalladas en este [enlace](provision/chef/README.md).
+
 
 ## Licencia
 Este proyecto tiene una licencia GPL v3.0, para información detallada vease [LICENSE](https://github.com/AythaE/DeFesti/blob/master/LICENSE)
