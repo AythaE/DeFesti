@@ -1,0 +1,68 @@
+---
+# Este playbook instala las dependencias necesarias para el microservicio organizadores.
+#Referencia para crear usuario: http://stackoverflow.com/questions/33359404/ansible-best-practice-for-maintaining-list-of-sudoers
+
+- hosts: DeFesti
+  remote_user: ubuntu
+  become: yes
+  become_method: sudo
+
+  vars:
+    pubKey: /home/aythae/.ssh/awsPAythae.pub
+    
+  tasks:
+    - name: Make sure we have a 'wheel' group
+      group:
+        name: wheel
+        state: present
+
+    - name: Allow 'wheel' group to have passwordless sudo
+      lineinfile:
+        dest: /etc/sudoers
+        state: present
+        regexp: '^%wheel'
+        line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+
+    - name: Add sudoers users to wheel group
+      user: name=defesti groups=wheel append=yes state=present createhome=yes
+
+
+    - name: Set up authorized keys for the deployer user
+      authorized_key: user=defesti key="{{pubKey}}"
+
+
+    - name: apt-get update and upgrade
+      apt: update_cache=yes upgrade=yes
+      remote_user: defesti
+
+    - name: install Git
+      apt: pkg=git state=latest install_recommends=yes
+      remote_user: defesti
+
+    - name: install NodeJS
+      apt: pkg=nodejs state=latest install_recommends=yes
+      remote_user: defesti
+
+    - name: install npm
+      apt: pkg=npm state=latest install_recommends=yes
+      remote_user: defesti
+
+    - name: install MongoDB-Server
+      apt: pkg=mongodb-server state=latest install_recommends=yes
+      remote_user: defesti
+
+    - name: Install ExpressJS using npm
+      npm: name=express path=/home/defesti
+      remote_user: defesti
+      become: no
+
+
+    - name: Install Passport using npm
+      npm: name=passport path=/home/defesti
+      become: no
+      remote_user: defesti
+
+    - name: Install Mongoose using npm
+      npm: name=mongoose path=/home/defesti
+      become: no
+      remote_user: defesti
