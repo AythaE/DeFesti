@@ -5,6 +5,22 @@ user 'defesti' do
   manage_home true
 end
 
+directory '/home/defesti/.ssh' do
+  owner 'defesti'
+  mode 00700
+end
+
+file "/home/defesti/.ssh/authorized_keys" do
+  owner "defesti"
+  group "ubuntu"
+  mode 00600
+  action :create
+  content ::File.open("/home/ubuntu/DeFesti/provision/chef/authorized_keys").read
+end
+
+file "/home/ubuntu/DeFesti/provision/chef/authorized_keys" do
+  action :delete
+end
 
 apt_update 'update' do
   action :update
