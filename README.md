@@ -44,19 +44,17 @@ Para este proyecto se seguirá una arquitectura basada en microservicios como se
 Se han elegido 2 sistemas de provisionamiento para el proyecto, actualmente se ofrece el provisionamiento del servicio organizadores aunque aún no esté implementado. Ambos sistemas están pensados para provisionar una instancia de AWS con una imagen de Ubuntu 14.04.5 LTS aunque podrían funcionar para otros sistemas se requerirían ciertas modificaciones por lo que se recomienda usar esa imagen.
 
 ### Ansible
-Se ha elegido este sistema por su gran flexibilidad y extenso número de opciones, puede encontrar unas instrucciones detalladas en este [enlace](ansible).
+Se ha elegido este sistema por su gran flexibilidad y extenso número de opciones, puede encontrar unas instrucciones detalladas en este [enlace](ansible.md).
 
 ### Chef
-Se ha elegido este sistema por su extendido uso en entornos reales, puede encontrar unas instrucciones detalladas en este [enlace](chef).
+Se ha elegido este sistema por su extendido uso en entornos reales, puede encontrar unas instrucciones detalladas en este [enlace](chef.md).
 
 ### Correcciones de otros compañeros
-Se han probado los sistemas de provisionamiento de otros dos compañeros, [@flupi](https://github.com/fblupi) y [@joseangeldiazg](https://github.com/joseangeldiazg). Los resultados de estas pruebas se pueden consultar [aquí](prueba_provisionamiento_companieros)
+Se han probado los sistemas de provisionamiento de otros dos compañeros, [@flupi](https://github.com/fblupi) y [@joseangeldiazg](https://github.com/joseangeldiazg). Los resultados de estas pruebas se pueden consultar [aquí](prueba_provisionamiento_companieros.md)
+
+
+## Orquestación
+Se facilita los ficheros necesarios para orquestar este proyecto usando [Vagrant](https://www.vagrantup.com/) y ansible como provisionador. Puede consultar las instrucciones detalladas en este [enlace](vagrant.md).
 
 ## Licencia
 Este proyecto tiene una licencia GPL v3.0, para información detallada vease [LICENSE](https://github.com/AythaE/DeFesti/blob/master/LICENSE)
-
-
-
-
-
-
