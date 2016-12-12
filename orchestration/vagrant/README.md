@@ -48,6 +48,6 @@ vagrant destroy
 
 En las siguientes imáganes se puede ver un ejemplo de ejecución de `vagrant up`:
 
-![Imagen Vagrant Up 1]( "Imagen Vagrant Up 1")
+![Imagen Vagrant Up 1](https://raw.githubusercontent.com/AythaE/DeFesti/96c1008b9946e414ef61abae0b98f931dbd385a4/images/Vagrant1.png "Imagen Vagrant Up 1")
 
-![Imagen Vagrant Up 2]( "Imagen Vagrant Up 2")
+![Imagen Vagrant Up 2](https://raw.githubusercontent.com/AythaE/DeFesti/96c1008b9946e414ef61abae0b98f931dbd385a4/images/Vagrant2.png "Imagen Vagrant Up 2")
