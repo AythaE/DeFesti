@@ -36,12 +36,18 @@ vagrant ssh
 Alternativamente tambien puede acceder a su instancia con el siguiente comando:
 
 ```
-ssh -i [rutaClavePrivada (.pem)] ubuntu@[IP pública asignada]
+ssh -i [rutaClavePrivada (.pem)] [usuario]@[IP pública asignada]
 ```
-Puede consultar la IP pública de la instancia creada en la [consola de gestion de AWS](https://console.aws.amazon.com/) seleccionando el servicio EC2 y allí Running instances. Se mostrará entonces un listado de las maquina virtuales creadas en AWS, seleccione la recién creada que tendrá como nombre "DeFesti vagrant EC2 Instance" y copie su IP pública.
+Puede consultar la IP pública de la instancia creada en la [consola de gestion de AWS](https://console.aws.amazon.com/) seleccionando el servicio EC2 y allí Running instances. Se mostrará entonces un listado de las maquina virtuales creadas en AWS, seleccione la recién creada que tendrá como nombre "DeFesti vagrant EC2 Instance" y copie su IP pública. El usuario creado por defecto en las instancias Ubuntu es "ubuntu".
 
 
 Para destruir la instancia cuando haya terminado de utilizarla ejecute el siguiente comando desde el directorio donde se encuentre el Vagrantfile:
 ```
 vagrant destroy
 ```
+
+En las siguientes imáganes se puede ver un ejemplo de ejecución de `vagrant up`:
+
+![Imagen Vagrant Up 1]( "Imagen Vagrant Up 1")
+
+![Imagen Vagrant Up 2]( "Imagen Vagrant Up 2")

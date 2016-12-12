@@ -14,41 +14,85 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
+
   config.vm.box = "dummy"
   config.vm.synced_folder ".", "/vagrant", disabled: true
 
-   config.vm.provider :aws do |aws, override|
-      aws.access_key_id = ENV['AWS_ACCESS_KEY_ID']
-      aws.secret_access_key = ENV['AWS_SECRET_ACCESS_KEY']
-      aws.region = "eu-west-1"
-      aws.availability_zone = "eu-west-1a"
-
-      # AMI from which we'll launch EC2 Instance
-      aws.ami =  "ami-1c4a046f" # Ubuntu 14.04
-      aws.keypair_name = ENV['AWS_KEY_PAIR_NAME']
-      aws.instance_type = "t2.micro"
-      aws.security_groups = [ENV['AWS_SECURITY_GROUP_NAME']]
-      aws.tags = {
- 		'Name' => 'DeFesti vagrant EC2 Instance',
- 		'Environment' => 'vagrant-sandbox'
- 		}
-     # Credentials to login to EC2 Instance
-     override.ssh.username = "ubuntu"
-     override.ssh.private_key_path = ENV['AWS_PRIVATE_KEY_PATH']
 
 
+   config.vm.define :organizadores do |organizadores|
+     organizadores.vm.host_name = "organizadores"
+
+     organizadores.vm.provider :aws do |aws, override|
+        aws.access_key_id = ENV['AWS_ACCESS_KEY_ID']
+        aws.secret_access_key = ENV['AWS_SECRET_ACCESS_KEY']
+        aws.region = "eu-west-1"
+        aws.availability_zone = "eu-west-1a"
+
+        # AMI from which we'll launch EC2 Instance
+        aws.ami =  "ami-1c4a046f" # Ubuntu 14.04
+        aws.keypair_name = ENV['AWS_KEY_PAIR_NAME']
+        aws.instance_type = "t2.micro"
+        aws.security_groups = [ENV['AWS_SECURITY_GROUP_NAME']]
+        aws.tags = {
+   		'Name' => 'DeFesti vagrant EC2 Instance',
+   		'Environment' => 'vagrant-sandbox'
+   		}
+       # Credentials to login to EC2 Instance
+       override.ssh.username = "ubuntu"
+       override.ssh.private_key_path = ENV['AWS_PRIVATE_KEY_PATH']
+
+
+     end
+
+     # Configuration for Ansible as Provisioner
+    # organizadores.ssh.insert_key = false
+
+     organizadores.vm.provision :ansible do |ansible|
+        ansible.playbook = "../../provision/ansible/organizadoresPlaybook.yml"
+      #  ansible.verbose = "v"
+        #ansible.host_key_checking = false
+        # Disable default limit to connect to all the machines
+        #ansible.limit = 'all'
+     end
    end
 
+   config.vm.define :festivales do |festivales|
+     festivales.vm.host_name = "festivales"
 
-   # Configuration for Ansible as Provisioner
-   config.ssh.insert_key = false
+     festivales.vm.provider :aws do |aws, override|
+        aws.access_key_id = ENV['AWS_ACCESS_KEY_ID']
+        aws.secret_access_key = ENV['AWS_SECRET_ACCESS_KEY']
+        aws.region = "eu-west-1"
+        aws.availability_zone = "eu-west-1a"
 
-   config.vm.provision :ansible do |ansible|
-      ansible.playbook = "../../provision/ansible/organizadoresPlaybook.yml"
-      #ansible.verbose = "v"
-      ansible.host_key_checking = false
-      # Disable default limit to connect to all the machines
-      ansible.limit = 'all'
+        # AMI from which we'll launch EC2 Instance
+        aws.ami =  "ami-1c4a046f" # Ubuntu 14.04
+        aws.keypair_name = ENV['AWS_KEY_PAIR_NAME']
+        aws.instance_type = "t2.micro"
+        aws.security_groups = [ENV['AWS_SECURITY_GROUP_NAME']]
+        aws.tags = {
+   		'Name' => 'DeFesti vagrant EC2 Instance',
+   		'Environment' => 'vagrant-sandbox'
+   		}
+       # Credentials to login to EC2 Instance
+       override.ssh.username = "ubuntu"
+       override.ssh.private_key_path = ENV['AWS_PRIVATE_KEY_PATH']
+
+
+     end
+
+     # Configuration for Ansible as Provisioner
+    # festivales.ssh.insert_key = false
+
+     festivales.vm.provision :ansible do |ansible|
+        ansible.playbook = "../../provision/ansible/organizadoresPlaybook.yml"
+        #ansible.verbose = "v"
+        #ansible.host_key_checking = false
+        # Disable default limit to connect to all the machines
+        #ansible.limit = 'all'
+     end
+
    end
 
 
