@@ -2,15 +2,16 @@
 # Este playbook instala las dependencias necesarias para el microservicio organizadores.
 #Referencia para crear usuario: http://stackoverflow.com/questions/33359404/ansible-best-practice-for-maintaining-list-of-sudoers
 
-- hosts: DeFesti
+- hosts: all
   remote_user: ubuntu
   become: yes
   become_method: sudo
 
   vars:
-    pubKey: /home/aythae/.ssh/awsPAythae.pub
-    
+    pubKey: /home/aythae/.ssh/awsAythae.pub
+
   tasks:
+
     - name: Make sure we have a 'wheel' group
       group:
         name: wheel
@@ -28,41 +29,43 @@
 
 
     - name: Set up authorized keys for the deployer user
-      authorized_key: user=defesti key="{{pubKey}}"
+      authorized_key: user=defesti key="{{ item }}"
+      with_file:
+        - "{{ pubKey }}"
 
-
+#Diferentes jugadas par poder cambiar la variable "ansible_ssh_user" cuando
+#sea necesario que las tareas las ejecute ese usuario.
+#Referencia: https://github.com/ansible/ansible/issues/4688
+- hosts: all
+  remote_user: defesti
+  become: yes
+  become_method: sudo
+  vars:
+    ansible_ssh_user: 'defesti'
+  tasks:
     - name: apt-get update and upgrade
       apt: update_cache=yes upgrade=yes
-      remote_user: defesti
 
     - name: install Git
       apt: pkg=git state=latest install_recommends=yes
-      remote_user: defesti
 
     - name: install NodeJS
       apt: pkg=nodejs state=latest install_recommends=yes
-      remote_user: defesti
 
     - name: install npm
       apt: pkg=npm state=latest install_recommends=yes
-      remote_user: defesti
 
     - name: install MongoDB-Server
       apt: pkg=mongodb-server state=latest install_recommends=yes
-      remote_user: defesti
 
     - name: Install ExpressJS using npm
       npm: name=express path=/home/defesti
-      remote_user: defesti
       become: no
-
 
     - name: Install Passport using npm
       npm: name=passport path=/home/defesti
       become: no
-      remote_user: defesti
 
     - name: Install Mongoose using npm
       npm: name=mongoose path=/home/defesti
       become: no
-      remote_user: defesti
