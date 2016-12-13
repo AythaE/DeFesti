@@ -21,11 +21,35 @@ source setUpAWS_Credentials.sh
 Es necesario instalar el plugin [vagrant-aws](https://github.com/mitchellh/vagrant-aws) para poder usar vagrant con instancias EC2 de AWS. Se han encontrado problemas con las versiones más nuevas de vagrant así que se recomienda usar vagrant 1.8.7.
 
 Una vez hecho eso y siguiendo las [instrucciones oficiales](https://github.com/mitchellh/vagrant-aws#quick-start) del repositorio del plugin es necesario añadir un box a vagrant cuyo proveedor sea aws, en este caso se añade un box dummy que configuraremos con los parametros que queramos en el Vagrantfile. Para añadir ese box ejecute:
+
 ```
  vagrant box add dummy https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box
 ```
 
-En el directorio que desee crear la maquina virtual sitúe el fichero [Vagrantfile](Vagrantfile) que se adjunta en esta carpeta y ejecute el siguiente comando para iniciar dos maquinas virtuales en AWS llamadas **organizadores** y **festivales**:
+Esta orquestación ejecuta un provisionamiento con ansible que crea un usuario en las maquinas virtuales, para poder acceder por ssh a este usuario es necesario indicarle a ansible donde está su clave publica asociada a la clave privada usada para conectarse con la máquina remota. Para generar la clave publica de una privada en formato .pem basta con ejecutar:
+
+```
+ssh-keygen -y -f mykey.pem > mykey.pub
+```
+
+tras esto hay que indicarle a ansible la ruta de esa clave en el fichero [`provision/ansible/organizadoresPlaybook.yml`](../../provision/ansible/organizadoresPlaybook.yml) modificando el valor de la variable `pubKey` por la ruta de su propia clave pública.
+
+```
+- hosts: all
+  remote_user: ubuntu
+  become: yes
+  become_method: sudo
+
+  vars:
+    pubKey: /home/aythae/.ssh/awsPAythae.pub
+
+  tasks:
+  ...
+```
+
+Es necesario que se ejecute en la región **eu-west-1**, en caso contrario es posible que surja un error del tipo `Value () for parameter groupId is invalid`, o algún problema con la ami de la máquina (ya que cambia entre distintas regiones) si esto ocurre puede cambiar la región de las dos máquinas en el fichero [Vagrantfile](Vagrantfile).
+
+Tras esto, en el directorio que desee crear la maquina virtual sitúe el fichero [Vagrantfile](Vagrantfile) que se adjunta en esta carpeta y ejecute el siguiente comando para iniciar dos maquinas virtuales en AWS llamadas **organizadores** y **festivales**:
 
 ```
 vagrant up --provider=aws
