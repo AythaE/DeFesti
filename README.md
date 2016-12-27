@@ -52,5 +52,8 @@ Se ha elegido este sistema por su extendido uso en entornos reales, puede encont
 ## Orquestación
 Se facilita los ficheros necesarios para orquestar este proyecto usando [Vagrant](https://www.vagrantup.com/) y ansible como provisionador. Puede consultar las instrucciones detalladas en este [enlace](orchestration/vagrant/README.md).
 
+## Contenedores
+Se ha usado Docker como plataforma para crear un entorno de pruebas usando contenedores. Se pueden consultar [aquí](container/docker/README.md) las instrucciones para descargar Docker y descargar el contenedor de [DockerHub](https://hub.docker.com/r/aythae/defesti/).
+
 ## Licencia
 Este proyecto tiene una licencia GPL v3.0, para información detallada véase [LICENSE](https://github.com/AythaE/DeFesti/blob/master/LICENSE)
