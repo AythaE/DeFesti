@@ -1,6 +1,6 @@
 # DeFesti
 
-Actualizado a 23/11/2016
+Actualizado a 27/12/2016
 
 Repositorio para el proyecto de la asignatura Cloud Computing 1 del  del Máster Ingeniería Informática UGR.
 
