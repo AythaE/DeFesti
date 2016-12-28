@@ -62,6 +62,8 @@ Se ha probado el sistemas de orquestación de otro compañero, [@flupi](https://
 ## Contenedores
 Se ha usado Docker como plataforma para crear un entorno de pruebas usando contenedores. Se pueden consultar [aquí](docker.md) las instrucciones para descargar Docker y descargar el contenedor de [DockerHub](https://hub.docker.com/r/aythae/defesti/).
 
+### Correcciones de otros compañeros
+Se ha probado el sistema de contenedores de otro compañero, [@flupi](https://github.com/fblupi). Los resultados de estas pruebas se pueden consultar [aquí](prueba_contenedores_companieros.md).
 
 ## Licencia
 Este proyecto tiene una licencia GPL v3.0, para información detallada vease [LICENSE](https://github.com/AythaE/DeFesti/blob/master/LICENSE)
