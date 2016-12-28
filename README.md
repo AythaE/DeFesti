@@ -1,8 +1,8 @@
 # DeFesti
 
-Actualizado a 23/11/2016
+Actualizado a 28/12/2016/
 
-Repositorio para el proyecto de la asignatura Cloud Computing 1 del  del Máster Ingeniería Informática UGR.
+Repositorio para el proyecto de la asignatura Cloud Computing 1 del Máster Ingeniería Informática UGR.
 
 ## Descripción del proyecto
 
@@ -57,6 +57,11 @@ Se facilita los ficheros necesarios para orquestar este proyecto usando [Vagrant
 
 ### Correcciones de otros compañeros
 Se ha probado el sistemas de orquestación de otro compañero, [@flupi](https://github.com/fblupi). Los resultados de estas pruebas se pueden consultar [aquí](prueba_orquestacion_companieros.md).
+
+
+## Contenedores
+Se ha usado Docker como plataforma para crear un entorno de pruebas usando contenedores. Se pueden consultar [aquí](docker.md) las instrucciones para descargar Docker y descargar el contenedor de [DockerHub](https://hub.docker.com/r/aythae/defesti/).
+
 
 ## Licencia
 Este proyecto tiene una licencia GPL v3.0, para información detallada vease [LICENSE](https://github.com/AythaE/DeFesti/blob/master/LICENSE)
