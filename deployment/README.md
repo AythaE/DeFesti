@@ -2,7 +2,7 @@
 
 Para este despliegue integrando las diversas herramientas utilizadas se ha usado instancias de AWS con una imagen Ubuntu 16.04.1.
 
-Para orquestar todo el despliegue se ha usado la herramienta Vagrant, para saber como realizar esta orquestación véase [las instrucciones de Vagrant para este repositorio](../orchestration/vagrant/README.MD). Como modificaciones a esas instrucciones comentar que he optado por actualizar la versión de Ubuntu a la ultima estable, a pesar de los problemas con Ansible por la falta de python 2.x. Por ello las maquinas creadas por este Vagrantfile tienen dos provisionadores, primero un shell que ejecuta el script [`installPythonUbuntu16.sh`](installPythonUbuntu16.sh) encargado de actualizar los paquetes de la máquina e instalar las dependencias necesarias para que funcione ansible en ella, tras ello se ejecuta el provisionador ansible con los distintos playbooks: [`organizadoresPlaybook.yml`](organizadoresPlaybook.yml), [`artistasPlaybook.yml`](artistasPlaybook.yml) y [`festivalesPlaybook.yml`](festivalesPlaybook.yml).
+Para orquestar todo el despliegue se ha usado la herramienta Vagrant, para saber como realizar esta orquestación véase [las instrucciones de Vagrant para este repositorio](../orchestration/vagrant/README.md). Como modificaciones a esas instrucciones comentar que he optado por actualizar la versión de Ubuntu a la ultima estable, a pesar de los problemas con Ansible por la falta de python 2.x. Por ello las maquinas creadas por este Vagrantfile tienen dos provisionadores, primero un shell que ejecuta el script [`installPythonUbuntu16.sh`](installPythonUbuntu16.sh) encargado de actualizar los paquetes de la máquina e instalar las dependencias necesarias para que funcione ansible en ella, tras ello se ejecuta el provisionador ansible con los distintos playbooks: [`organizadoresPlaybook.yml`](organizadoresPlaybook.yml), [`artistasPlaybook.yml`](artistasPlaybook.yml) y [`festivalesPlaybook.yml`](festivalesPlaybook.yml).
 
 #### Modificación de las instrucciones previas
 Hay que aplicar una pequeña modificación en estas instrucciones, en el paso de indicar en el playbook la ruta a la clave pública de acceso ssh, es necesario modificar la variable `pubKey` de los tres playbooks.
@@ -23,7 +23,7 @@ Tambien se ha optado por externalizar los log del sistema usando el servicio [Lo
 Para ver los módulos concretos instalados en cada contenedor véase [`package.json`](package.json).
 
 ## Resultados del despliegue
-Si se han seguido [las instrucciones de Vagrant para este repositorio](../orchestration/vagrant/README.MD) y la [modificación](#modificación-de-las-instrucciones-previas) comentada arriba bastaría con exportar las credenciales de AWS, añadir el box dummy (si no ha hecho ya), exportar la clave pública de AWS (indicando en los playbooks donde encontrarla) y ejecutar el comando
+Si se han seguido [las instrucciones de Vagrant para este repositorio](../orchestration/vagrant/README.md) y la [modificación](#modificación-de-las-instrucciones-previas) comentada arriba bastaría con exportar las credenciales de AWS, añadir el box dummy (si no ha hecho ya), exportar la clave pública de AWS (indicando en los playbooks donde encontrarla) y ejecutar el comando
 ```
 vagrant up --provider=aws
 ```
