@@ -1,0 +1,130 @@
+#REFERENCE: https://gist.github.com/arbabnazar/ccf020f03c599ae35cfb/
+
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure("2") do |config|
+  # The most common configuration options are documented and commented below.
+  # For a complete reference, please see the online documentation at
+  # https://docs.vagrantup.com.
+
+  # Every Vagrant development environment requires a box. You can search for
+  # boxes at https://atlas.hashicorp.com/search.
+
+  config.vm.box = "dummy"
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+
+
+
+   config.vm.define :organizadores do |organizadores|
+     organizadores.vm.host_name = "organizadores"
+
+     organizadores.vm.provider :aws do |aws, override|
+        aws.access_key_id = ENV['AWS_ACCESS_KEY_ID']
+        aws.secret_access_key = ENV['AWS_SECRET_ACCESS_KEY']
+        aws.region = "eu-west-1"
+        aws.availability_zone = "eu-west-1a"
+
+        # AMI from which we'll launch EC2 Instance
+        aws.ami =  "ami-0d77397e" # Ubuntu 16.04.1
+        aws.keypair_name = ENV['AWS_KEY_PAIR_NAME']
+        aws.instance_type = "t2.micro"
+        aws.security_groups = [ENV['AWS_SECURITY_GROUP_NAME']]
+        aws.tags = {
+   		'Name' => 'DeFesti Organizadores Instance',
+   		'Environment' => 'vagrant-sandbox'
+   		}
+       # Credentials to login to EC2 Instance
+       override.ssh.username = "ubuntu"
+       override.ssh.private_key_path = ENV['AWS_PRIVATE_KEY_PATH']
+
+
+     end
+
+     #Provisioners configuration
+     organizadores.vm.provision :shell, :path => "installPythonUbuntu16.sh"
+     organizadores.vm.provision :ansible do |ansible|
+        ansible.playbook = "organizadoresPlaybook.yml"
+        #ansible.verbose = "v"
+        #ansible.host_key_checking = false
+        # Disable default limit to connect to all the machines
+        #ansible.limit = 'all'
+     end
+   end
+
+   config.vm.define :festivales do |festivales|
+     festivales.vm.host_name = "festivales"
+
+     festivales.vm.provider :aws do |aws, override|
+        aws.access_key_id = ENV['AWS_ACCESS_KEY_ID']
+        aws.secret_access_key = ENV['AWS_SECRET_ACCESS_KEY']
+        aws.region = "eu-west-1"
+        aws.availability_zone = "eu-west-1a"
+
+        # AMI from which we'll launch EC2 Instance
+        aws.ami =  "ami-0d77397e" # Ubuntu 16.04.1
+        aws.keypair_name = ENV['AWS_KEY_PAIR_NAME']
+        aws.instance_type = "t2.micro"
+        aws.security_groups = [ENV['AWS_SECURITY_GROUP_NAME']]
+        aws.tags = {
+      'Name' => 'DeFesti Festivales Instance',
+      'Environment' => 'vagrant-sandbox'
+      }
+       # Credentials to login to EC2 Instance
+       override.ssh.username = "ubuntu"
+       override.ssh.private_key_path = ENV['AWS_PRIVATE_KEY_PATH']
+
+
+     end
+
+     #Provisioners configuration
+     festivales.vm.provision :shell, :path => "installPythonUbuntu16.sh"
+     festivales.vm.provision :ansible do |ansible|
+        ansible.playbook = "festivalesPlaybook.yml"
+        #ansible.verbose = "v"
+        #ansible.host_key_checking = false
+        # Disable default limit to connect to all the machines
+        #ansible.limit = 'all'
+     end
+   end
+
+   config.vm.define :artistas do |artistas|
+     artistas.vm.host_name = "artistas"
+
+     artistas.vm.provider :aws do |aws, override|
+        aws.access_key_id = ENV['AWS_ACCESS_KEY_ID']
+        aws.secret_access_key = ENV['AWS_SECRET_ACCESS_KEY']
+        aws.region = "eu-west-1"
+        aws.availability_zone = "eu-west-1a"
+
+        # AMI from which we'll launch EC2 Instance
+        aws.ami =  "ami-0d77397e" # Ubuntu 16.04.1
+        aws.keypair_name = ENV['AWS_KEY_PAIR_NAME']
+        aws.instance_type = "t2.micro"
+        aws.security_groups = [ENV['AWS_SECURITY_GROUP_NAME']]
+        aws.tags = {
+      'Name' => 'DeFesti Artistas Instance',
+      'Environment' => 'vagrant-sandbox'
+      }
+       # Credentials to login to EC2 Instance
+       override.ssh.username = "ubuntu"
+       override.ssh.private_key_path = ENV['AWS_PRIVATE_KEY_PATH']
+
+
+     end
+
+     #Provisioners configuration
+     artistas.vm.provision :shell, :path => "installPythonUbuntu16.sh"
+     artistas.vm.provision :ansible do |ansible|
+        ansible.playbook = "artistasPlaybook.yml"
+        #ansible.verbose = "v"
+        #ansible.host_key_checking = false
+        # Disable default limit to connect to all the machines
+        #ansible.limit = 'all'
+     end
+   end
+end
