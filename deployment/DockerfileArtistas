@@ -20,4 +20,4 @@ RUN npm install
 # EXPOSE 8080
 
 # to choose which command run when the container is running
-# CMD [ "npm", "start" ]
+CMD [ "npm", "start" ]
