@@ -1,7 +1,9 @@
 {
   "author": "AythaE <aythae@gmail.com>",
   "name": "DeFesti",
+  "description": "Proyecto para la asignatura CC de la UGR",
   "version": "0.0.1",
+  "license": "GPL-3.0",
   "repository": {
     "url": "https://github.com/AythaE/DeFesti.git"
   },
@@ -10,8 +12,11 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "express": "^4.14.1",
-    "mongoose": "^4.8.1",
-    "passport": "^0.3.2"
+   "express": "^4.14.1",
+   "mongoose": "^4.8.1",
+   "passport": "^0.3.2",
+   "winston": "^2.3.1",
+   "winston-loggly-bulk": "^1.3.4"
   }
+
 }
