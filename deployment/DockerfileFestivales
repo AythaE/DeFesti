@@ -2,7 +2,13 @@
 FROM node:boron-alpine
 MAINTAINER AythaE <aythae@GMail.com>
 
+# Update container packages
 RUN apk update && apk upgrade
+
+# Add user defesti to group wheel and login into it
+# Reference https://github.com/nodejs/docker-node/blob/master/docs/BestPractices.md#non-root-user
+RUN adduser -S -g wheel defesti
+USER defesti
 
 # Create app directory
 RUN mkdir -p /home/defesti/festivales
