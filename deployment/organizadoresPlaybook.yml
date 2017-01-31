@@ -1,0 +1,82 @@
+---
+# Este playbook instala las dependencias necesarias para el microservicio organizadores.
+#Referencia para crear usuario: http://stackoverflow.com/questions/33359404/ansible-best-practice-for-maintaining-list-of-sudoers
+
+- hosts: all
+  remote_user: ubuntu
+  become: yes
+  become_method: sudo
+
+  vars:
+    pubKey: /home/aythae/.ssh/awsAythae.pub
+
+  tasks:
+
+    - name: Make sure we have a 'wheel' group
+      group:
+        name: wheel
+        state: present
+
+    - name: Allow 'wheel' group to have passwordless sudo
+      lineinfile:
+        dest: /etc/sudoers
+        state: present
+        regexp: '^%wheel'
+        line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+
+    - name: Add sudoers users to wheel group
+      user: name=defesti groups=wheel append=yes state=present createhome=yes
+
+
+    - name: Set up authorized keys for the deployer user
+      authorized_key: user=defesti key="{{ item }}"
+      with_file:
+        - "{{ pubKey }}"
+
+#Diferentes jugadas par poder cambiar la variable "ansible_ssh_user" cuando
+#sea necesario que las tareas las ejecute ese usuario.
+#Referencia: https://github.com/ansible/ansible/issues/4688
+- hosts: all
+  remote_user: defesti
+  become: yes
+  become_method: sudo
+  vars:
+    ansible_ssh_user: 'defesti'
+  tasks:
+
+    #Instalar docker Referencia: https://docs.docker.com/engine/installation/linux/ubuntu/
+    - name: install Curl
+      apt: pkg=curl state=latest install_recommends=yes
+
+    - name: install linux-image-extra
+      apt: pkg=linux-image-extra-4.4.0-45-generic state=latest install_recommends=yes
+
+    - name: install linux-image-extra-virtual
+      apt: pkg=linux-image-extra-virtual state=latest install_recommends=yes
+
+    - name: install apt-transport-https
+      apt: pkg=apt-transport-https state=latest install_recommends=yes
+
+    - name: install ca-certificates
+      apt: pkg=ca-certificates state=latest install_recommends=yes
+
+    - name: add Docker’s official GPG key
+      shell: curl -fsSL https://yum.dockerproject.org/gpg | sudo apt-key add -
+      become: no
+
+    - name: set up the docker's stable repository
+      shell: add-apt-repository "deb https://apt.dockerproject.org/repo/ ubuntu-xenial  main"
+
+    - name: apt-get update
+      apt: update_cache=yes
+
+    - name: install docker-emgine
+      apt: pkg=docker-engine state=latest install_recommends=yes
+
+    #Descargar contenedor de dockerhub
+    - name: download organizadores container
+      shell: docker pull aythae/defesti-organizadores
+
+    #Arrancar contenedor
+    - name: starts docker container
+      shell: docker run -itd --name contenedorOrganizadores  aythae/defesti-organizadores
