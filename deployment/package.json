@@ -1,0 +1,17 @@
+{
+  "author": "AythaE <aythae@gmail.com>",
+  "name": "DeFesti",
+  "version": "0.0.1",
+  "repository": {
+    "url": "https://github.com/AythaE/DeFesti.git"
+  },
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.14.1",
+    "mongoose": "^4.8.1",
+    "passport": "^0.3.2"
+  }
+}
