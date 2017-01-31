@@ -1,6 +1,6 @@
 # DeFesti
 
-Actualizado a 27/12/2016
+Actualizado a 31/01/2017
 
 Repositorio para el proyecto de la asignatura Cloud Computing 1 del  del Máster Ingeniería Informática UGR.
 
@@ -54,6 +54,11 @@ Se facilita los ficheros necesarios para orquestar este proyecto usando [Vagrant
 
 ## Contenedores
 Se ha usado Docker como plataforma para crear un entorno de pruebas usando contenedores. Se pueden consultar [aquí](container/docker/README.md) las instrucciones para descargar Docker y descargar el contenedor de [DockerHub](https://hub.docker.com/r/aythae/defesti/).
+
+## Despliegue final
+Se ha realizado un despliegue combinando las tecnologias usadas previamente, usando orquestación con Vagrant de tres máquinas (una por microservicio) provisionadas con Ansible y usando contenedores con Docker para facilitar el despliegue y hacerlo independiente de la máquina donde se realice. Dichos contenedores se encuentran en DockerHub en las siguientes ubicaciones: [defesti-organizadores](https://hub.docker.com/r/aythae/defesti-organizadores/), [defesti-festivales](https://hub.docker.com/r/aythae/defesti-festivales/) y [defesti-artistas](https://hub.docker.com/r/aythae/defesti-artistas/).
+
+Para consultar las instrucciones concretas de despliegue haga click [aquí](deployment/README.md).
 
 ## Licencia
 Este proyecto tiene una licencia GPL v3.0, para información detallada véase [LICENSE](https://github.com/AythaE/DeFesti/blob/master/LICENSE)
